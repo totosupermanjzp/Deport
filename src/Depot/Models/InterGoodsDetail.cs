@@ -13,5 +13,6 @@ namespace Depot.Models
         public string saleID { get; set; }
         public string salemanName { get; set; }
         public int number { get; set; }
+        public double price { get; set; }       //供应商提供的价格
     }
 }

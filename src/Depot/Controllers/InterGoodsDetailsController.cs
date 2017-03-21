@@ -143,6 +143,39 @@ namespace Depot.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> InGoods(int? id)
+        {
+            var goods = await _context.InterGoodsDetail.SingleOrDefaultAsync(m => m.ID == id);
+            var username = User.Identity.Name;
+            if (goods == null)
+            {
+                return NotFound();
+            }
+            var ingoods = new Name
+            {
+                EnrollmentDate = DateTime.Now,
+                //Goods = goods.Goods,
+            };
+            //var outgoods = new OutGoods
+            //{
+            //    EnrollmentDate = DateTime.Now,
+            //    //ID = goods.ID,
+            //    location = goods.location,
+            //    Goods = goods.Goods,
+            //    number = goods.number,
+            //    personname = username,
+            //    price = (goods.price + 2)
+            //};
+            //_context.OutGoods.Add(outgoods);
+            //await _context.SaveChangesAsync();
+            //var name = await _context.Names.SingleOrDefaultAsync(m => m.ID == id);
+            //_context.Names.Remove(name);
+            //await _context.SaveChangesAsync();
+
+            //return RedirectToAction("Index");
+            return View();
+        }
+
         private bool InterGoodsDetailExists(int id)
         {
             return _context.InterGoodsDetail.Any(e => e.ID == id);

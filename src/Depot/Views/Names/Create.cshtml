@@ -19,6 +19,13 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="GoodsRFID" class="col-md-2 control-label">RFID标签编码</label>
+            <div class="col-md-10">
+                <input asp-for="GoodsRFID" class="form-control" />
+                <span asp-validation-for="GoodsRFID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
             <label asp-for="number" class="col-md-2 control-label">数量</label>
             <div class="col-md-10">
                 <input asp-for="number" class="form-control" />
