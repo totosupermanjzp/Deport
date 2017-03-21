@@ -1,0 +1,57 @@
+@model Depot.Models.Person
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>编辑</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>人员控制</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="PersonID" />
+        <div class="form-group">
+            <label asp-for="DepartmentId" class="col-md-2 control-label">部门编号</label>
+            <div class="col-md-10">
+                <input asp-for="DepartmentId" class="form-control" />
+                <span asp-validation-for="DepartmentId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PersonManage" class="col-md-2 control-label">部门名</label>
+            <div class="col-md-10">
+                <input asp-for="PersonManage" class="form-control" />
+                <span asp-validation-for="PersonManage" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PersonName" class="col-md-2 control-label">名字</label>
+            <div class="col-md-10">
+                <input asp-for="PersonName" class="form-control" />
+                <span asp-validation-for="PersonName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Power" class="col-md-2 control-label">权限</label>
+            <div class="col-md-10">
+                <input asp-for="Power" class="form-control" />
+                <span asp-validation-for="Power" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

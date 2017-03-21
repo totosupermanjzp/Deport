@@ -1,0 +1,53 @@
+@model Depot.Models.OutGoods
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>详细</h2>
+
+<div>
+    <h4>出货详细</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            出货时间
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnrollmentDate)
+        </dd>
+        <dt>
+            货物
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Goods)
+        </dd>
+        <dt>
+            出货地
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+        <dt>
+            数量
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.number)
+        </dd>
+        <dt>
+            出货人
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.personname)
+        </dd>
+        <dt>
+            出货价
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

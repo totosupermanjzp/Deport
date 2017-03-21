@@ -1,0 +1,87 @@
+@model IEnumerable<Depot.Models.InterGoodsDetail>
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "InterGoods";
+}
+
+@{
+    var username = User.Identity.Name;                              //获取用户的标志信息
+    var temp = "";
+    if (username != null)
+    {
+        var user = UserManager.FindByNameAsync(username).Result;        //用标志信息获取用户的具体信息
+        temp = user.PhoneNumber;                                       //获取他的权限码
+    }
+}
+@if (temp == "hpon")
+{
+    <img src="~/images/feature/saleman.png" style="width:100px" />
+    <h2>您好 销售商!</h2>
+    <a asp-action="Create">创建供货物品</a>
+}
+@if(temp == "kcct")
+{
+    <img src="~/images/feature/boss.png" style="width:100px;" />
+    <h3>您好 老大!</h3>
+    <h2>供应商提供货物</h2>
+}
+@if (temp == "qnop")
+{
+    <img src="~/images/feature/warehouseKeeper.png" style="width:100px;" />
+        <h3>您好 仓库管理员!</h3>
+        <h2>供应商提供货物</h2>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                货物名
+            </th>
+            <th>
+                供应货物编码
+            </th>
+            <th>
+                数量
+            </th>
+            <th>
+                贩卖编码
+            </th>
+            <th>
+                供应商名称
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.goodsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.interBookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.saleID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salemanName)
+            </td>
+            <td>
+                @if(temp == "hpon")
+                { 
+                <a asp-action="Edit" asp-route-id="@item.ID"><img src="~/images/feature/edit.png" class="img_icon" /></a> 
+                <a asp-action="Delete" asp-route-id="@item.ID"><img src="~/images/feature/delete.png" class="img_icon" /></a>
+                }
+                <a asp-action="Details" asp-route-id="@item.ID"><img src="~/images/feature/detail.png" class="img_icon" /></a> 
+                <a asp-action="Details" asp-route-id="@item.ID"><img src="~/images/feature/in.png" class="img_icon" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

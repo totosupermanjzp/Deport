@@ -1,0 +1,84 @@
+@model IEnumerable<Depot.Models.OutGoods>
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    var username = User.Identity.Name;                              //获取用户的标志信息
+    var temp = "";
+    if (username != null)
+    {
+        var user = UserManager.FindByNameAsync(username).Result;        //用标志信息获取用户的具体信息
+        temp = user.PhoneNumber;                                       //获取他的权限码
+    }
+}
+@if (@temp == "kcct")
+{
+    <img src="~/images/feature/boss.png" style="width:100px;" />
+        <h3>您好 老大!</h3>
+        <a asp-action="Create">入库</a>
+}
+@if (@temp == "itfu")
+{
+    <img src="~/images/feature/bike.png" />
+        <h3>快递小哥 您辛苦了!</h3>
+}
+@if (temp == "qnop")
+{
+    <img src="~/images/feature/warehouseKeeper.png" style="width:100px;" />
+        <h3>您好 仓库管理员!</h3>
+}
+<h2>出货</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                出货时间
+            </th>
+            <th>
+                货物
+            </th>
+            <th>
+                出货地
+            </th>
+            <th>
+                数量
+            </th>
+            <th>
+                出货人
+            </th>
+            <th>
+                价格
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Goods)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.personname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ID"><img src="~/images/feature/detail.png" class="img_icon" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

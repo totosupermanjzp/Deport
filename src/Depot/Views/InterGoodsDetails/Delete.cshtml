@@ -1,0 +1,52 @@
+@model Depot.Models.InterGoodsDetail
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>删除</h2>
+
+<h3>你确定要删除他吗？</h3>
+<div>
+    <h4>提供货物</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.goodsName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.goodsName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.interBookID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.interBookID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.saleID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.saleID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.salemanName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.salemanName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

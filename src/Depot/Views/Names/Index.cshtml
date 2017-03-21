@@ -1,0 +1,107 @@
+@model SelectList<Depot.Models.Name>
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var username = User.Identity.Name;                              //获取用户的标志信息
+    var temp = "";
+    if (username != null)
+    {
+        var user = UserManager.FindByNameAsync(username).Result;        //用标志信息获取用户的具体信息
+        temp = user.PhoneNumber;                                       //获取他的权限码
+    }
+}
+<p>
+    @if (@temp == "kcct")
+    {
+        <img src="~/images/feature/boss.png" style="width:100px;" />
+        <h3>您好 老大!</h3>
+        <a asp-action="Create">入库</a>
+    }
+    @if(@temp == "itfu")
+    {
+        <img src="~/images/feature/bike.png"/>
+        <h3>快递小哥 您辛苦了!</h3>
+    }
+    @if (temp == "qnop")
+    {
+        <img src="~/images/feature/warehouseKeeper.png" style="width:100px;" />
+        <h3>您好 仓库管理员!</h3>
+    }
+</p>
+<h2>货物情况</h2>
+<form asp-action="Index" method="get">
+    <div class="form-action no-color">
+        <p>
+            查询货物名:<input type="text" name="SearchString" value="@ViewData["currentFilter"]"/>
+            <input type="submit" value="Search" class="btn btn-default"/> |
+            <a asp-action="Index">Back To List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder ="@ViewData["DataSortParm"]" asp-route-currentFilter ="@ViewData["CurrentFilter"]">入库时间</a>
+            </th>
+            <th>
+                货物名
+            </th>
+            <th>
+                <a asp-action ="Index" asp-route-sortOrder ="@ViewData["NameSortParm"]" asp-route-currentFilter ="@ViewData["CurrentFilter"]">数量</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Goods)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.number)
+            </td>
+            <td>
+                @if(@temp == "kcct")
+                {
+                <a asp-action="Edit" asp-route-id="@item.ID"><img src="~/images/feature/edit.png" class="img_icon"/></a> 
+                <a asp-action="Delete" asp-route-id="@item.ID"><img src="~/images/feature/delete.png" class="img_icon"/></a>
+                }
+                <a asp-action="Details" asp-route-id="@item.ID"><img src="~/images/feature/detail.png" class="img_icon"/></a> 
+                <a asp-action="OutGoods" asp-route-id="@item.ID"><img src="~/images/feature/outGoods.png" class="img_icon"></a>
+            </td>
+        </tr>
+
+}
+    </tbody>
+</table>
+
+@{ 
+    var prevDisabled = !Model.HasPreviousPage ? "disable" : "";
+    var nextDisabled = !Model.HasNextPage ? "disable" : "";
+}
+
+<a asp-action ="Index"
+   asp-route-sortOrder ="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex - 1) "
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-danger @prevDisabled btn"
+>
+    上一页
+</a>
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-danger @nextDisabled btn">
+    下一页
+</a>

@@ -1,0 +1,40 @@
+@model Depot.Models.Name
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>删除</h2>
+
+<h3>您真的要删除它吗</h3>
+<div>
+    <h4>货物</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            入库时间
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnrollmentDate)
+        </dd>
+        <dt>
+            货物名
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Goods)
+        </dd>
+        <dt>
+            数量
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.number)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

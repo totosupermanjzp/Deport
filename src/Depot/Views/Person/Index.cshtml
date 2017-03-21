@@ -1,0 +1,106 @@
+﻿@model SelectList<Depot.Models.Person>
+@*@model IEnumerable<Depot.Models.Person>*@
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Person";
+}
+@{ 
+    var username = User.Identity.Name;                              //获取用户的标志信息
+    var temp = "";
+    if (username != null)
+    {
+        var user = UserManager.FindByNameAsync(username).Result;        //用标志信息获取用户的具体信息
+        temp = user.PhoneNumber;                                       //获取他的权限码
+    }
+}
+<p>
+    @if (temp == "kcct")
+    {
+        <img src="~/images/feature/boss.png" style="width:100px;" />
+        <h3>您好 老大!</h3>
+        <a asp-action="Create">添加新人员</a>
+    }
+    @if (temp == "qnop")
+    {
+        <img src="~/images/feature/warehouseKeeper.png" style="width:100px;" />
+        <h3>您好 仓库管理员!</h3>
+    }
+</p>
+<h2>人员控制</h2>
+<form asp-action="Index" method="get">
+    <div class="form-action no-color">
+        <p>
+            员工查询<input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back To List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.DepartmentId)*@
+                <a asp-action ="Index" asp-route-sortOrder ="@ViewData["DepartmentIDSortParam"]" asp-route-currentFilter ="@ViewData["CurrentFilter"]">部门编号</a>
+            </th>
+            <th>
+                部门名
+            </th>
+            <th>
+               名字
+            </th>
+            <th>
+               权限
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonManage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Power)
+            </td>
+            <td>
+                @if(temp == "kcct")
+                {
+                <a asp-action="Edit" asp-route-id="@item.PersonID"><img src="~/images/feature/edit.png" class="img_icon" /></a> 
+                <a asp-action="Delete" asp-route-id="@item.PersonID"><img src="~/images/feature/delete.png" class="img_icon" /></a >
+                }
+                <a asp-action="Details" asp-route-id="@item.PersonID"><img src="~/images/feature/detail.png" class="img_icon" /></a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disable" : "";
+    var nextDisabled = !Model.HasNextPage ? "disable" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-danger @prevDisabled btn">
+    上一页
+</a>
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-danger @nextDisabled btn">
+    下一页
+</a>

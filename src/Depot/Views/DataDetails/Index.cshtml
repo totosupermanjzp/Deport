@@ -1,0 +1,75 @@
+@model IEnumerable<Depot.Models.DataDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<p>
+    <img src="~/images/feature/boss.png" style="width:100px;" />
+    <h3>您好 老大!</h3>
+    <a asp-action="Create">创建</a>
+</p>
+
+<h2>详细数据</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                编号
+            </th>
+            <th>
+                货物名
+            </th>
+            <th>
+                利润
+            </th>
+            <th>
+                购入单价
+            </th>
+            <th>
+                购买数量
+            </th>
+            <th>
+                出售数量
+            </th>
+            <th>
+                出售单价
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Goodsname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalSaleMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.butprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.buynumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salenumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.saleprice)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID"><img src="~/images/feature/edit.png" class="img_icon" /></a> |
+                <a asp-action="Delete" asp-route-id="@item.ID"><img src="~/images/feature/delete.png" class="img_icon" /></a>
+                <a asp-action="Details" asp-route-id="@item.ID"><img src="~/images/feature/detail.png" class="img_icon" /></a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

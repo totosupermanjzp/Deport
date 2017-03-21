@@ -1,0 +1,64 @@
+@model Depot.Models.InterGoodsDetail
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>编辑</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>提供货物</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label asp-for="goodsName" class="col-md-2 control-label">货物名</label>
+            <div class="col-md-10">
+                <input asp-for="goodsName" class="form-control" />
+                <span asp-validation-for="goodsName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="interBookID" class="col-md-2 control-label">供应货物编码</label>
+            <div class="col-md-10">
+                <input asp-for="interBookID" class="form-control" />
+                <span asp-validation-for="interBookID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="number" class="col-md-2 control-label">数量</label>
+            <div class="col-md-10">
+                <input asp-for="number" class="form-control" />
+                <span asp-validation-for="number" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="saleID" class="col-md-2 control-label">贩卖编码</label>
+            <div class="col-md-10">
+                <input asp-for="saleID" class="form-control" />
+                <span asp-validation-for="saleID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="salemanName" class="col-md-2 control-label">供应商名称</label>
+            <div class="col-md-10">
+                <input asp-for="salemanName" class="form-control" />
+                <span asp-validation-for="salemanName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

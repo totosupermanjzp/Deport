@@ -1,0 +1,60 @@
+@model Depot.Models.DataDetail
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>详细</h2>
+
+<div>
+    <h4>详细数据</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            编号
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataID)
+        </dd>
+        <dt>
+            货物名
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Goodsname)
+        </dd>
+        <dt>
+            利润
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalSaleMoney)
+        </dd>
+        <dt>
+            购入单价
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.butprice)
+        </dd>
+        <dt>
+            购买数量
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.buynumber)
+        </dd>
+        <dt>
+            出售数量
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.salenumber)
+        </dd>
+        <dt>
+            出售单价
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.saleprice)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,78 @@
+@model Depot.Models.DataDetail
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>编辑</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>详细数据</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label asp-for="DataID" class="col-md-2 control-label">编号</label>
+            <div class="col-md-10">
+                <input asp-for="DataID" class="form-control" />
+                <span asp-validation-for="DataID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Goodsname" class="col-md-2 control-label">货物名</label>
+            <div class="col-md-10">
+                <input asp-for="Goodsname" class="form-control" />
+                <span asp-validation-for="Goodsname" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TotalSaleMoney" class="col-md-2 control-label">利润</label>
+            <div class="col-md-10">
+                <input asp-for="TotalSaleMoney" class="form-control" />
+                <span asp-validation-for="TotalSaleMoney" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="butprice" class="col-md-2 control-label">购入单价</label>
+            <div class="col-md-10">
+                <input asp-for="butprice" class="form-control" />
+                <span asp-validation-for="butprice" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="buynumber" class="col-md-2 control-label">购买数量</label>
+            <div class="col-md-10">
+                <input asp-for="buynumber" class="form-control" />
+                <span asp-validation-for="buynumber" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="salenumber" class="col-md-2 control-label">出售数量</label>
+            <div class="col-md-10">
+                <input asp-for="salenumber" class="form-control" />
+                <span asp-validation-for="salenumber" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="saleprice" class="col-md-2 control-label">出售单价</label>
+            <div class="col-md-10">
+                <input asp-for="saleprice" class="form-control" />
+                <span asp-validation-for="saleprice" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

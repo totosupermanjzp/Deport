@@ -1,0 +1,27 @@
+﻿body {
+}
+.jumbotron{
+    background-color:white;
+    height:500px;
+    color:white;
+    background-image:url(/images/backgroup/backgroup.jpg);
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size:cover;
+}
+.col-md-4{
+    height:200px;
+    text-align:center
+}
+.home_footerImage{
+    display:inline
+}
+.img_icon{
+    height:20px;
+    margin-left:5px;
+    transition:all 0.55s ease;
+}
+.img_icon:hover{
+    background-color:red
+}

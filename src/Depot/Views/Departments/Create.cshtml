@@ -1,0 +1,49 @@
+@model Depot.Models.Department
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>创立新部门</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>部门</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="account" class="col-md-2 control-label">人数</label>
+            <div class="col-md-10">
+                <input asp-for="account" class="form-control" />
+                <span asp-validation-for="account" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="power" class="col-md-2 control-label">部门编号</label>
+            <div class="col-md-10">
+                <input asp-for="power" class="form-control" />
+                <span asp-validation-for="power" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="type" class="col-md-2 control-label">人员名称</label>
+            <div class="col-md-10">
+                <input asp-for="type" class="form-control" />
+                <span asp-validation-for="type" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,20 @@
+@model IEnumerable<Depot.Models.OutGoods>
+
+@{
+    ViewData["Title"] = "OutGoods";
+}
+
+<h2>出货</h2>
+
+<form asp-action="OutGoods">
+    <div class="form-horizontal">
+        <h4>货物</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,64 @@
+@model Depot.Models.DataDetail
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>删除</h2>
+
+<h3>您确定要删除吗？？</h3>
+<div>
+    <h4>详细数据</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            编号
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataID)
+        </dd>
+        <dt>
+            货物名
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Goodsname)
+        </dd>
+        <dt>
+            利润
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalSaleMoney)
+        </dd>
+        <dt>
+            购入单价
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.butprice)
+        </dd>
+        <dt>
+            购买数量
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.buynumber)
+        </dd>
+        <dt>
+            出售数量
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.salenumber)
+        </dd>
+        <dt>
+            出售单价
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.saleprice)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

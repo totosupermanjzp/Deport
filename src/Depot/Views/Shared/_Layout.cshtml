@@ -1,0 +1,109 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - 仓库管理系统</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/style_control.css"/>
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body>
+    @{ 
+        var username = User.Identity.Name;
+        var Temp  = "";
+        if(username != null)
+        {
+            var UserName = UserManager.FindByNameAsync(username).Result;
+            Temp = UserName.PhoneNumber;
+        }
+    }
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">仓库管理系统</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if(Temp == "kcct")
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">主页</a></li>
+                        <li><a asp-area="" asp-controller="Books" asp-action="Index">订单号</a></li>
+                        <li><a asp-area="" asp-controller="Names" asp-action="Index">物品名</a></li>
+                        <li><a asp-area="" asp-controller="Departments" asp-action="Index">仓库组</a></li>
+                        <li><a asp-area="" asp-controller="DataDetails" asp-action="Index">管理员</a></li>
+                        <li><a asp-area="" asp-controller="InterGoodsDetails" asp-action="Index">供应商</a></li>
+                        <li><a asp-area="" asp-controller="Person" asp-action="Index">人员</a></li>
+                        <li><a asp-area="" asp-controller="OutGoods" asp-action="Index">出货</a></li>
+                    }
+                    @if (Temp == "qnop")
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">主页</a></li>
+                        <li><a asp-area="" asp-controller="Books" asp-action="Index">订单号</a></li>
+                        <li><a asp-area="" asp-controller="Names" asp-action="Index">物品名</a></li>
+                        <li><a asp-area="" asp-controller="Departments" asp-action="Index">仓库组</a></li>
+                        <li><a asp-area="" asp-controller="InterGoodsDetails" asp-action="Index">供应商</a></li>
+                        <li><a asp-area="" asp-controller="Person" asp-action="Index">人员</a></li>
+                        <li><a asp-area="" asp-controller="OutGoods" asp-action="Index">出货</a></li>
+                    }
+                    @if (Temp == "hpon")
+                    {
+                        <li><a asp-area="" asp-controller="InterGoodsDetails" asp-action="Index">供应商</a></li>
+
+                    }
+                    @if (Temp == "itfu")
+                    {
+                        <li><a asp-area="" asp-controller="Names" asp-action="Index">物品名</a></li>
+                        <li><a asp-area="" asp-controller="OutGoods" asp-action="Index">出货</a></li>
+                    }
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+          
+        </footer>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

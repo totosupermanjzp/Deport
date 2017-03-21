@@ -1,0 +1,48 @@
+@model Depot.Models.InterGoodsDetail
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>详细</h2>
+
+<div>
+    <h4>提供货物</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            货物名
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.goodsName)
+        </dd>
+        <dt>
+            供应货物编码
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.interBookID)
+        </dd>
+        <dt>
+            数量
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.number)
+        </dd>
+        <dt>
+            贩卖编码
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.saleID)
+        </dd>
+        <dt>
+            供应商名称
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.salemanName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
