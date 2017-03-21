@@ -121,12 +121,13 @@ namespace Depot.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EnrollmentDate,Goods,number")] Name name)
+        public async Task<IActionResult> Create([Bind("Goods,number,location,price")] Name name)
         {
             try
             { 
                 if (ModelState.IsValid)
                 {
+                    name.EnrollmentDate = DateTime.Now;
                     _context.Add(name);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
