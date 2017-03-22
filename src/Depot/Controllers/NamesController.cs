@@ -124,10 +124,12 @@ namespace Depot.Controllers
         public async Task<IActionResult> Create([Bind("Goods,number,location,price,GoodsRFID")] Name name)
         {
             try
-            { 
+            {
+                var username = User.Identity.Name;
                 if (ModelState.IsValid)
                 {
                     name.EnrollmentDate = DateTime.Now;
+                    name.InterPerson = username;
                     _context.Add(name);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
@@ -161,7 +163,7 @@ namespace Depot.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,EnrollmentDate,Goods,number")] Name name)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,EnrollmentDate,Goods,number,location,GoodsRFID,price,InterPerson")] Name name)
         {
             if (id != name.ID)
             {

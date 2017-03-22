@@ -12,6 +12,7 @@ namespace Depot.Models
         public int GoodsRFID { get; set; }              //RFID编码
         public int number { get; set; }                 //货物数量
         public DateTime EnrollmentDate { get; set; }    //货物进货的时间
+        public string InterPerson { get; set; }         //进货人
         public bool isOut { get; set; }                 //货物是否出货
         public string location { get; set; }            //出货地址
         public string suplierID { get; set; }           //供应商ID

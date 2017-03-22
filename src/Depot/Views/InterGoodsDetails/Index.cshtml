@@ -77,9 +77,12 @@
                 { 
                 <a asp-action="Edit" asp-route-id="@item.ID"><img src="~/images/feature/edit.png" class="img_icon" /></a> 
                 <a asp-action="Delete" asp-route-id="@item.ID"><img src="~/images/feature/delete.png" class="img_icon" /></a>
-                }
-                <a asp-action="Details" asp-route-id="@item.ID"><img src="~/images/feature/detail.png" class="img_icon" /></a> 
+                }     
+                @if(temp == "kcct"|| temp == "qnop" ||temp == "itfu")
+                {
                 <a asp-action="InGoods" asp-route-id="@item.ID"><img src="~/images/feature/in.png" class="img_icon" /></a>
+                }
+                <a asp-action="Details" asp-route-id="@item.ID"><img src="~/images/feature/detail.png" class="img_icon" /></a>
             </td>
         </tr>
 }

@@ -19,12 +19,12 @@ namespace Depot.Models
             }
             var names = new Name[]
             {
-                new Name {Goods = "防盗门",number = 250,   EnrollmentDate = DateTime.Parse("2017-01-01"),isOut = true, location="北京" , suplierID = "001", price = 22.9,GoodsRFID = 20012},
-                new Name {Goods = "键盘",  number = 199,   EnrollmentDate = DateTime.Parse("2016-12-02"),isOut = false,location="哈尔滨",suplierID = "002", price = 11.1,GoodsRFID = 20013},
-                new Name {Goods = "大理石",number = 700,   EnrollmentDate = DateTime.Parse("2015-10-10"),isOut = false,location="深圳",  suplierID = "005", price = 7.8,GoodsRFID = 20014},
-                new Name {Goods = "导航",  number = 200,   EnrollmentDate = DateTime.Parse("2017-02-01"),isOut = false,location="海南",  suplierID = "004", price = 9.5,GoodsRFID = 20015},
-                new Name {Goods = "表",    number = 9000,  EnrollmentDate = DateTime.Parse("2017-01-25"),isOut = true, location="贵州",  suplierID = "007", price = 1.99,GoodsRFID = 20016},
-                new Name {Goods = "手链",  number = 2220,  EnrollmentDate = DateTime.Parse("2016-11-11"),isOut = false,location="周口",  suplierID = "010", price = 25.0,GoodsRFID = 20017}
+                new Name {Goods = "防盗门",number = 250,   EnrollmentDate = DateTime.Now,isOut = true, location="北京" , suplierID = "001", price = 22.9,   GoodsRFID = 20012},
+                new Name {Goods = "键盘",  number = 199,   EnrollmentDate = DateTime.Now,isOut = false,location="哈尔滨",suplierID = "002", price = 11.1,   GoodsRFID = 20013},
+                new Name {Goods = "大理石",number = 700,   EnrollmentDate = DateTime.Now,isOut = false,location="深圳",  suplierID = "005", price = 7.8,    GoodsRFID = 20014},
+                new Name {Goods = "导航",  number = 200,   EnrollmentDate = DateTime.Now,isOut = false,location="海南",  suplierID = "004", price = 9.5,    GoodsRFID = 20015},
+                new Name {Goods = "表",    number = 9000,  EnrollmentDate = DateTime.Now,isOut = true, location="贵州",  suplierID = "007", price = 1.99,   GoodsRFID = 20016},
+                new Name {Goods = "手链",  number = 2220,  EnrollmentDate = DateTime.Now,isOut = false,location="周口",  suplierID = "010", price = 25.0,   GoodsRFID = 20017}
             };
             foreach(Name n in names)
             {

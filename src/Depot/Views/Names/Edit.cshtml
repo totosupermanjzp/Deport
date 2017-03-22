@@ -11,26 +11,24 @@
         <h4>货物</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="ID" />
-        <div class="form-group">
-            <label asp-for="EnrollmentDate" class="col-md-2 control-label">入库时间</label>
-            <div class="col-md-10">
-                <input asp-for="EnrollmentDate" class="form-control" />
-                <span asp-validation-for="EnrollmentDate" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Goods" class="col-md-2 control-label">货物名</label>
-            <div class="col-md-10">
-                <input asp-for="Goods" class="form-control" />
-                <span asp-validation-for="Goods" class="text-danger" />
-            </div>
-        </div>
+        <input type="hidden" asp-for="ID" />
+        <input type="hidden" asp-for="EnrollmentDate"/>
+        <input type="hidden" asp-for="GoodsRFID"/>
+        <input type="hidden" asp-for="price"/>
+        <input type="hidden" asp-for="InterPerson"/>
+        <input type="hidden" asp-for="Goods"/>
         <div class="form-group">
             <label asp-for="number" class="col-md-2 control-label">数量</label>
             <div class="col-md-10">
                 <input asp-for="number" class="form-control" />
                 <span asp-validation-for="number" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="location" class="col-md-2 control-label">送货地址</label>
+            <div class="col-md-10">
+                <input asp-for="location" class="cityinput" id="citySelect" />
+                <span asp-validation-for="location" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

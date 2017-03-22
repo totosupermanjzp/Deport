@@ -33,6 +33,13 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="price" class="col-md-2 control-label">价格</label>
+            <div class="col-md-10">
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
             <label asp-for="saleID" class="col-md-2 control-label">贩卖编号</label>
             <div class="col-md-10">
                 <input asp-for="saleID" class="form-control" />

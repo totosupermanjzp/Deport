@@ -1,0 +1,45 @@
+@model Depot.Models.InterGoodsDetail
+
+@{
+    ViewData["Title"] = "InGoods";
+}
+
+<h2>进货</h2>
+
+<form asp-action="InGoods">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="interBookID"/>
+        <input type="hidden" asp-for="price"/>
+        <input type="hidden" asp-for="salemanName"/>
+        <input type="hidden" asp-for="saleID"/>
+        <div class="form-group">
+            <label asp-for="goodsName" class="col-md-2 control-label">进货物品</label>
+            <div class="col-md-10">
+                <input asp-for="goodsName" class="form-control" />
+                <span asp-validation-for="goodsName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="number" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="number" class="form-control" />
+                <span asp-validation-for="number" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="InGoods" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
